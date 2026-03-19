@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrailTracker | Outbound Outreach Command Center</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div class="hero-copy-block">
+          <div class="brand-mark" aria-label="TrailTracker logo">
+            <span class="brand-mark__glyph">TT</span>
+            <div>
+              <p class="eyebrow">TrailTracker</p>
+              <p class="brand-subtitle">Outbound outreach command center for account executives</p>
+            </div>
+          </div>
+          <h1>TrailTracker helps you see every outbound motion in one dark-mode workspace.</h1>
+          <p class="hero-copy">
+            Track who you have already reached out to, how many rounds each account has seen,
+            and which channels, personas, and sequences are producing replies and meetings.
+          </p>
+        </div>
+        <button id="openAddAccount" class="primary-btn">Add target account</button>
+      </header>
+
+      <section class="stats-grid" id="statsGrid"></section>
+
+      <section class="panel filters-panel">
+        <div>
+          <h2>Pipeline overview</h2>
+          <p>Filter TrailTracker activity to spot momentum, stalled accounts, and winning plays.</p>
+        </div>
+        <div class="filters">
+          <label>
+            Status
+            <select id="statusFilter">
+              <option value="all">All statuses</option>
+            </select>
+          </label>
+          <label>
+            Channel
+            <select id="channelFilter">
+              <option value="all">All channels</option>
+            </select>
+          </label>
+          <label>
+            Search
+            <input id="searchInput" type="search" placeholder="Search accounts or contacts" />
+          </label>
+        </div>
+      </section>
+
+      <main class="content-grid">
+        <section class="panel table-panel">
+          <div class="section-heading">
+            <div>
+              <h2>Account coverage</h2>
+              <p>See who has been contacted, where they sit in sequence, and what next step to run.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Account</th>
+                  <th>Primary contact</th>
+                  <th>Segment</th>
+                  <th>Rounds</th>
+                  <th>Last touch</th>
+                  <th>Status</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody id="accountsTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="side-column">
+          <section class="panel">
+            <div class="section-heading">
+              <div>
+                <h2>Sequence analytics</h2>
+                <p>Understand conversion by round and channel.</p>
+              </div>
+            </div>
+            <div id="analyticsCards" class="analytics-cards"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <div>
+                <h2>Top-performing plays</h2>
+                <p>Best response rates from recent outreach.</p>
+              </div>
+            </div>
+            <ul id="topPlays" class="top-plays"></ul>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <dialog id="accountDialog">
+      <form id="accountForm" method="dialog" class="dialog-form">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">TrailTracker</p>
+            <h2>Add target account</h2>
+          </div>
+          <button type="button" class="ghost-btn" id="closeDialog">Close</button>
+        </div>
+        <div class="dialog-grid">
+          <label>Account name <input name="account" required /></label>
+          <label>Primary contact <input name="contact" required /></label>
+          <label>Segment <input name="segment" placeholder="Enterprise, Mid-Market..." required /></label>
+          <label>Status
+            <select name="status" required>
+              <option value="Researching">Researching</option>
+              <option value="In sequence">In sequence</option>
+              <option value="Meeting booked">Meeting booked</option>
+              <option value="Closed - no response">Closed - no response</option>
+            </select>
+          </label>
+          <label>Rounds completed <input name="rounds" type="number" min="0" max="15" value="1" required /></label>
+          <label>Channel
+            <select name="channel" required>
+              <option value="Email">Email</option>
+              <option value="Phone">Phone</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Mixed">Mixed</option>
+            </select>
+          </label>
+          <label>Result <input name="result" placeholder="No reply, Interested, Referred..." required /></label>
+          <label>Open rate (%) <input name="openRate" type="number" min="0" max="100" value="0" required /></label>
+          <label>Reply rate (%) <input name="replyRate" type="number" min="0" max="100" value="0" required /></label>
+          <label>Meeting rate (%) <input name="meetingRate" type="number" min="0" max="100" value="0" required /></label>
+        </div>
+        <menu>
+          <button type="submit" class="primary-btn">Save account</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
