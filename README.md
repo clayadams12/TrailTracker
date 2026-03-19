@@ -1,6 +1,9 @@
 # TrailTracker
 
 TrailTracker is a lightweight dark-theme front-end prototype for Account Executives to organize outbound account outreach.
+# Outbound Outreach Tracker
+
+A lightweight front-end prototype for Account Executives to organize outbound account outreach.
 
 ## What it does
 - Tracks target accounts and primary contacts.

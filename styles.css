@@ -8,6 +8,13 @@
   --muted: #94a3b8;
   --accent: #38bdf8;
   --accent-strong: #22d3ee;
+  --bg: #09111f;
+  --panel: rgba(16, 24, 40, 0.92);
+  --panel-border: rgba(148, 163, 184, 0.18);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
   --success: #34d399;
   --warning: #fbbf24;
   --danger: #fb7185;
@@ -27,6 +34,8 @@ body {
     radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), transparent 28%),
     radial-gradient(circle at top right, rgba(99, 102, 241, 0.18), transparent 24%),
     linear-gradient(180deg, rgba(15, 23, 42, 0.6), transparent 26%),
+    radial-gradient(circle at top left, rgba(14, 165, 233, 0.25), transparent 30%),
+    radial-gradient(circle at top right, rgba(99, 102, 241, 0.2), transparent 25%),
     var(--bg);
   color: var(--text);
 }
@@ -42,6 +51,7 @@ body {
   border: 1px solid var(--panel-border);
   border-radius: 24px;
   box-shadow: 0 20px 50px rgba(2, 6, 23, 0.5);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.35);
 }
 
 .hero {
@@ -81,6 +91,9 @@ body {
 
 .eyebrow {
   margin-bottom: 6px;
+}
+
+.eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: var(--accent);
@@ -101,6 +114,8 @@ h1 {
   max-width: 13ch;
 }
 
+h1, h2, p { margin-top: 0; }
+h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-bottom: 12px; }
 .hero-copy, .panel p { color: var(--muted); max-width: 62ch; }
 
 .primary-btn, .ghost-btn {
@@ -160,6 +175,9 @@ h1 {
   background: linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.96));
 }
 
+.filters-panel,
+.section-heading,
+.dialog-header { justify-content: space-between; align-items: end; }
 .filters { flex-wrap: wrap; align-items: end; }
 .content-grid { margin-top: 22px; align-items: start; }
 .table-panel { flex: 1.6; }
@@ -178,6 +196,8 @@ input, select {
   border-radius: 14px;
   border: 1px solid rgba(71, 85, 105, 0.5);
   background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.8);
   color: var(--text);
 }
 
@@ -209,6 +229,9 @@ td strong { display: block; margin-bottom: 4px; }
   border: 1px solid rgba(71, 85, 105, 0.32);
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(15, 23, 42, 0.84), rgba(2, 6, 23, 0.98));
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.75);
 }
 
 .metric-row {
@@ -233,6 +256,12 @@ dialog {
 }
 
 dialog::backdrop { background: rgba(2, 6, 23, 0.76); }
+  background: rgba(7, 12, 24, 0.98);
+  color: var(--text);
+  width: min(720px, calc(100vw - 24px));
+}
+
+dialog::backdrop { background: rgba(2, 6, 23, 0.68); }
 .dialog-form { padding: 24px; }
 .dialog-grid {
   display: grid;
