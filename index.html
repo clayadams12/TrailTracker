@@ -12,25 +12,31 @@
       <header class="hero">
         <div class="hero-copy-block">
           <div class="brand-mark" aria-label="TrailTracker logo">
-            <span class="brand-mark__glyph">TT</span>
+            <div class="brand-mark__glyph" aria-hidden="true">
+              <span class="glyph-orbit glyph-orbit--one"></span>
+              <span class="glyph-orbit glyph-orbit--two"></span>
+              <span class="glyph-pulse glyph-pulse--one"></span>
+              <span class="glyph-pulse glyph-pulse--two"></span>
+              <span class="glyph-node glyph-node--top"></span>
+              <span class="glyph-node glyph-node--mid"></span>
+              <span class="glyph-node glyph-node--end"></span>
+            </div>
             <div>
               <p class="eyebrow">TrailTracker</p>
+              <h2 class="brand-wordmark">Trail Tracker</h2>
               <p class="brand-subtitle">Outbound outreach command center for account executives</p>
             </div>
           </div>
-          <h1>TrailTracker helps you see every outbound motion in one dark-mode workspace.</h1>
-          <p class="hero-copy">
-            Track who you have already reached out to, how many rounds each account has seen,
-            and which channels, personas, and sequences are producing replies and meetings.
-        <div>
-          <p class="eyebrow">Account Executive workspace</p>
-          <h1>Outbound Outreach Tracker</h1>
-          <p class="hero-copy">
-            Track target accounts, monitor outreach rounds, and compare what is
-            working across channels, personas, and outcomes.
-          </p>
+          <div>
+            <p class="eyebrow">Account Executive workspace</p>
+            <h1>TrailTracker helps you see every outbound motion.</h1>
+            <p class="hero-copy">
+              Track target accounts, monitor outreach rounds, and compare what is
+              working across channels, personas, and outcomes.
+            </p>
+          </div>
+          <button id="openAddAccount" class="primary-btn">Add target account</button>
         </div>
-        <button id="openAddAccount" class="primary-btn">Add target account</button>
       </header>
 
       <section class="stats-grid" id="statsGrid"></section>
@@ -62,31 +68,65 @@
       </section>
 
       <main class="content-grid">
-        <section class="panel table-panel">
-          <div class="section-heading">
-            <div>
-              <h2>Account coverage</h2>
-              <p>See who has been contacted, where they sit in sequence, and what next step to run.</p>
-              <p>See who has been contacted, where they sit in sequence, and next steps.</p>
+        <div class="primary-column">
+          <section class="panel table-panel">
+            <div class="section-heading">
+              <div>
+                <h2>Account coverage</h2>
+                <p>See who has been contacted, where they sit in sequence, and what next step to run.</p>
+                <p>See who has been contacted, where they sit in sequence, and next steps.</p>
+              </div>
             </div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Account</th>
-                  <th>Primary contact</th>
-                  <th>Segment</th>
-                  <th>Rounds</th>
-                  <th>Last touch</th>
-                  <th>Status</th>
-                  <th>Result</th>
-                </tr>
-              </thead>
-              <tbody id="accountsTableBody"></tbody>
-            </table>
-          </div>
-        </section>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Account</th>
+                    <th>Primary contact</th>
+                    <th>Segment</th>
+                    <th>Rounds</th>
+                    <th>Last touch</th>
+                    <th>Status</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody id="accountsTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="ideas-grid">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Next-best action engine</h2>
+                  <p>Recommended next moves so reps can execute instead of just reviewing history.</p>
+                </div>
+              </div>
+              <div id="nextBestActions" class="action-list"></div>
+            </section>
+
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Account-level heat score</h2>
+                  <p>Prioritize warm accounts using touches, engagement, recency, site interest, and contact depth.</p>
+                </div>
+              </div>
+              <div id="heatScoreCards" class="heat-score-grid"></div>
+            </section>
+
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <h2>Objection tracker</h2>
+                  <p>Track the objections showing up most often across outreach so leadership can respond faster.</p>
+                </div>
+              </div>
+              <div id="objectionTracker" class="objection-list"></div>
+            </section>
+          </section>
+        </div>
 
         <aside class="side-column">
           <section class="panel">
@@ -123,9 +163,38 @@
           <button type="button" class="ghost-btn" id="closeDialog">Close</button>
         </div>
         <div class="dialog-grid">
-          <label>Account name <input name="account" required /></label>
-          <label>Primary contact <input name="contact" required /></label>
-          <label>Segment <input name="segment" placeholder="Enterprise, Mid-Market..." required /></label>
+          <label>Account name
+            <select name="account" required>
+              <option value="Northstar Health">Northstar Health</option>
+              <option value="Crestline Logistics">Crestline Logistics</option>
+              <option value="Bluepeak Software">Bluepeak Software</option>
+              <option value="Sable Security">Sable Security</option>
+              <option value="Harborview Systems">Harborview Systems</option>
+              <option value="Pioneer BioLabs">Pioneer BioLabs</option>
+              <option value="Summit Retail Group">Summit Retail Group</option>
+              <option value="Atlas Manufacturing">Atlas Manufacturing</option>
+            </select>
+          </label>
+          <label>Primary contact
+            <select name="contact" required>
+              <option value="Jade Kim · VP Revenue Ops">Jade Kim · VP Revenue Ops</option>
+              <option value="Marco Alvarez · COO">Marco Alvarez · COO</option>
+              <option value="Nina Shah · Head of Sales">Nina Shah · Head of Sales</option>
+              <option value="Devon Brooks · CRO">Devon Brooks · CRO</option>
+              <option value="Elena Park · VP Marketing">Elena Park · VP Marketing</option>
+              <option value="Chris Morgan · Director of IT">Chris Morgan · Director of IT</option>
+              <option value="Taylor Reed · Revenue Operations Manager">Taylor Reed · Revenue Operations Manager</option>
+              <option value="Priya Nair · Chief Digital Officer">Priya Nair · Chief Digital Officer</option>
+            </select>
+          </label>
+          <label>Segment
+            <select name="segment" required>
+              <option value="Enterprise">Enterprise</option>
+              <option value="Mid-Market">Mid-Market</option>
+              <option value="Growth">Growth</option>
+              <option value="Strategic">Strategic</option>
+            </select>
+          </label>
           <label>Status
             <select name="status" required>
               <option value="Researching">Researching</option>
@@ -134,7 +203,16 @@
               <option value="Closed - no response">Closed - no response</option>
             </select>
           </label>
-          <label>Rounds completed <input name="rounds" type="number" min="0" max="15" value="1" required /></label>
+          <label>Rounds completed
+            <select name="rounds" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </label>
           <label>Channel
             <select name="channel" required>
               <option value="Email">Email</option>
@@ -143,10 +221,49 @@
               <option value="Mixed">Mixed</option>
             </select>
           </label>
-          <label>Result <input name="result" placeholder="No reply, Interested, Referred..." required /></label>
-          <label>Open rate (%) <input name="openRate" type="number" min="0" max="100" value="0" required /></label>
-          <label>Reply rate (%) <input name="replyRate" type="number" min="0" max="100" value="0" required /></label>
-          <label>Meeting rate (%) <input name="meetingRate" type="number" min="0" max="100" value="0" required /></label>
+          <label>Result
+            <select name="result" required>
+              <option value="Discovery call booked">Discovery call booked</option>
+              <option value="Asked for pricing deck">Asked for pricing deck</option>
+              <option value="Interested">Interested</option>
+              <option value="Referred internally">Referred internally</option>
+              <option value="Follow-up requested next quarter">Follow-up requested next quarter</option>
+              <option value="No reply after 5 touches">No reply after 5 touches</option>
+              <option value="Persona mapping in progress">Persona mapping in progress</option>
+            </select>
+          </label>
+          <label>Open rate (%)
+            <select name="openRate" required>
+              <option value="0">0</option>
+              <option value="15">15</option>
+              <option value="25">25</option>
+              <option value="40">40</option>
+              <option value="55">55</option>
+              <option value="70">70</option>
+              <option value="85">85</option>
+            </select>
+          </label>
+          <label>Reply rate (%)
+            <select name="replyRate" required>
+              <option value="0">0</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="30">30</option>
+            </select>
+          </label>
+          <label>Meeting rate (%)
+            <select name="meetingRate" required>
+              <option value="0">0</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+            </select>
+          </label>
         </div>
         <menu>
           <button type="submit" class="primary-btn">Save account</button>
